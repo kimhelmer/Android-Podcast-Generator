@@ -262,7 +262,7 @@ class OpenAiClientTest {
     }
 
     @Test fun redactionRemovesKeyShapedStringsAndKnownKey() {
-        val text = "bad key $FAKE_KEY and ${"s" + "k-proj-abcdEFGH1234"} and custom-secret-value-xyz"
+        val text = "bad key $FAKE_KEY and $FAKE_PROJECT_KEY and custom-secret-value-xyz"
         val out = redactSecrets(text, "custom-secret-value-xyz")
         assertFalse(out.contains("sk-"))
         assertFalse(out.contains("custom-secret"))

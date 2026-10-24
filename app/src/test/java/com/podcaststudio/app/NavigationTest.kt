@@ -118,13 +118,13 @@ class NavigationTest {
 
     @Test fun savedKeyIsNeverShownInPlaintext() {
         compose.onNodeWithText("Settings").performClick()
-        compose.onNodeWithTag("openai-field").performTextInput("s" + "k-test-not-a-real-key")
+        compose.onNodeWithTag("openai-field").performTextInput(TYPED_FAKE_KEY)
         compose.onNodeWithTag("openai-save").performClick()
         compose.onNodeWithText("A key is stored (hidden)").assertIsDisplayed()
-        assertEquals("s" + "k-test-not-a-real-key", secrets.get(SecretKeyName.OPENAI))
+        assertEquals(TYPED_FAKE_KEY, secrets.get(SecretKeyName.OPENAI))
         // input cleared after save, and the value appears nowhere in the UI tree
-        compose.onAllNodesWithText("s" + "k-test-not-a-real-key", substring = true).assertCountEquals(0)
-        compose.onAllNodesWithText("sk-test", substring = true).assertCountEquals(0)
+        compose.onAllNodesWithText(TYPED_FAKE_KEY, substring = true).assertCountEquals(0)
+        compose.onAllNodesWithText(TYPED_FAKE_KEY.substringBefore("FAKE"), substring = true).assertCountEquals(0)
     }
 
     @Test fun simulatedModeIsAnnouncedOnCreateScreen() {

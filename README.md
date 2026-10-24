@@ -4,7 +4,7 @@ An Android app that turns a topic into a short two-person podcast episode, entir
 
 You type what the episode should be about, pick a language, a length and two voices. The app researches the topic on the web, writes a conversation between a **host** and a **guest**, speaks it with realistic voices, and lets you listen to it, read the script and see the sources.
 
-> **Status:** an early personal project. It is covered by about 270 automated tests that use fake servers, and it has been run on a real phone by its author, but not across many devices or Android versions. Expect rough edges. Some things, such as lock-screen playback with real ElevenLabs audio, have had limited real-device testing.
+> **Status:** an early personal project. It is covered by about 270 automated tests that use fake servers. The author has also tested it on a real Android phone, including real ElevenLabs voices and playback with the screen locked, but not across many devices or Android versions. Expect rough edges.
 >
 > **Not affiliated:** this project is independent. It is not affiliated with, endorsed by, or sponsored by OpenAI or ElevenLabs. Their names and trademarks belong to their owners.
 
@@ -197,7 +197,7 @@ The defaults are a starting point. If OpenAI or ElevenLabs reports that a model 
 
 ### Listen
 
-When it finishes, tap **Play episode**, or open the **Library** tab and tap the episode. The player has play/pause, a seek bar and the elapsed and total time. Playback is designed to continue with the screen off or in the background, and the app remembers your position. While it plays, the app provides an Android media notification so you can control it from the lock screen (this has had limited testing on real phones).
+When it finishes, tap **Play episode**, or open the **Library** tab and tap the episode. The player has play/pause, a seek bar and the elapsed and total time. Playback continues with the screen off or in the background, and the app remembers your position. While it plays, Android shows a media notification so you can control it from the lock screen.
 
 ### Inspect the script and sources
 
@@ -282,7 +282,7 @@ Run the checks (use `.\gradlew.bat` on Windows):
 ./gradlew lintDebug testDebugUnitTest assembleDebug
 ```
 
-The tests are JVM and Robolectric tests. OpenAI and ElevenLabs are replaced by local fake servers, so **no test ever calls a real API or spends money**. They cannot check behaviour on a physical phone, such as lock-screen playback, notifications or real voices.
+The tests are JVM and Robolectric tests. OpenAI and ElevenLabs are replaced by local fake servers, so **no test ever calls a real API or spends money**. They cannot check behaviour on a physical phone, such as lock-screen playback, notifications or real voices (the author checked lock-screen playback and real ElevenLabs voices by hand).
 
 Built with Kotlin, Jetpack Compose, Room, Media3, Retrofit/OkHttp and kotlinx.serialization.
 
