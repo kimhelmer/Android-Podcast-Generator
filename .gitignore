@@ -1,10 +1,40 @@
+# Gradle / Android build output
 .gradle/
 build/
-local.properties
-.idea/
-*.iml
 .kotlin/
+captures/
+.cxx/
+.externalNativeBuild/
+app/release/
+app/debug/
 *.apk
 *.aab
+*.hprof
+
+# Local machine configuration
+local.properties
+local.defaults.properties
+gradle-local.properties
+
+# IDE files
+.idea/
+*.iml
+
+# Secrets and signing material: never commit these
+.env
+.env.*
 *.keystore
 *.jks
+*.p12
+*.pfx
+*.pem
+*.key
+keystore.properties
+secrets.properties
+google-services.json
+service-account*.json
+
+# Logs and OS clutter
+*.log
+.DS_Store
+Thumbs.db
